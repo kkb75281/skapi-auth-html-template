@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://cdn.jsdelivr.net/npm/skapi-js@latest/dist/skapi.js"></script>
+
+<script src="service.js"></script>
+<main>
+    <h1>Login Success</h1>
+    <p id="WelcomeMessage"></p>
+    <pre id="UserInfo"></pre>
+    <a href="update-profile.html">Update Profile</a>
+    <br>
+    <a href="remove-account.html">Remove Account</a>
+    <br>
+    <br>
+    <a href="logout.html">Logout</a>
+
+</main>
+
+<script>
+    /* 
+        Get user profile and display it on the page.
+    */
+    skapi.getProfile().then(user => {
+        if (user) {
+            let welcomeMessage = document.getElementById("WelcomeMessage");
+            if (welcomeMessage) {
+                welcomeMessage.innerHTML = `Welcome, ${user.name || user.email || user.user_id}!`;
+            }
+
+            let userInfo = document.getElementById("UserInfo");
+            if (userInfo) {
+                userInfo.innerHTML = JSON.stringify(user, null, 2);
+            }
+        }
+    });
+</script>
