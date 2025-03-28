@@ -8,7 +8,7 @@ This template packs full solid authentication features you can use in your HTML 
 
 ## How To Run
 
-Open `index.html` locally or...
+Open the `index.html` locally or...
 
 ### Remote Server
 
