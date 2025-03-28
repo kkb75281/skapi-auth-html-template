@@ -28,7 +28,7 @@ The application will be hosted on port `3300`
 
 ## Important!
 
-Replace the `SERVICE_ID` and `OWNER_ID` to your service in `service.js`
+Replace the `SERVICE_ID` and `OWNER_ID` value to your service in `service.js`
 
 You can get your own service ID from [Skapi](https://www.skapi.com)
 
