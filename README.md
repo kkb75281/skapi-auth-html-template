@@ -2,8 +2,6 @@
 
 This is a plain HTML template for Skapi's authentication features.
 
-No CSS is used in this template so don't let the design fool you.
-
 This template packs all the authentication features you can use in your HTML application:
 
 - Signup
@@ -17,7 +15,7 @@ This template packs all the authentication features you can use in your HTML app
 
 ## How To Run
 
-Just open the `index.html` locally.
+Download the project, unzip, and open the `index.html`.
 
 ### Remote Server
 
@@ -44,7 +42,3 @@ Currently the service is running on **Trial Mode**.
 **All the user data will be deleted every 14 days.**
 
 You can get your own service ID from [Skapi](https://www.skapi.com)
-
-## Documentation
-
-For more information check out our [documentation](https://docs.skapi.com)
