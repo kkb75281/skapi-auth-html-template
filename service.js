@@ -16,9 +16,9 @@ const OWNER_ID = "f8e16604-69e4-451c-9d90-4410f801c006";
 /*
     Below, the options object is passed to the Skapi constructor.
     The options object can have the following properties:
-    - autoLogin: boolean, when set to true, the user will be automatically logged in.
-    - eventListener: object, contains event listeners for the Skapi object.
-        - onLogin: function, called when the user is logged in, or when updates the user's session, or the user's is logged out.
+    - autoLogin: <boolean>, when set to true, the user will be automatically logged in.
+    - eventListener: <object>, contains event listeners for the Skapi object.
+        - onLogin: <function>, called when the user is logged in, or when updates the user's session, or the user's is logged out.
 */
 
 let options = {
@@ -36,5 +36,5 @@ let options = {
     }
 }
 
-const skapi = new Skapi(SERVICE_ID, OWNER_ID, options);
+const skapi = new Skapi(SERVICE_ID, OWNER_ID);
 
