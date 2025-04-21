@@ -36,5 +36,5 @@ let options = {
     }
 }
 
-const skapi = new Skapi(SERVICE_ID, OWNER_ID);
+const skapi = new Skapi(SERVICE_ID, OWNER_ID, options);
 
