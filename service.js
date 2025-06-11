@@ -10,8 +10,8 @@
     For more information, checkout the Getting Started: https://docs.skapi.com/introduction/getting-started.html
 */
 
-const SERVICE_ID = "ap22gWhRD5uQeL7VeFEc";
-const OWNER_ID = "f8e16604-69e4-451c-9d90-4410f801c006";
+const SERVICE_ID = "ap22kUvyM1ErUE29gi5D";
+const OWNER_ID = "bf305ace-03b5-4f9d-b88f-291458748ca3";
 
 /*
     Below, the options object is passed to the Skapi constructor.
@@ -24,7 +24,7 @@ const OWNER_ID = "f8e16604-69e4-451c-9d90-4410f801c006";
 let options = {
     autoLogin: true,
     eventListener: {
-        onLogin: user => {
+        onLogin: (user) => {
             if (!user) {
                 // user is not logged in.
                 // If url is welcome.html redirect to index.html
@@ -33,8 +33,7 @@ let options = {
                 }
             }
         },
-    }
-}
+    },
+};
 
 const skapi = new Skapi(SERVICE_ID, OWNER_ID, options);
-

@@ -2,24 +2,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://cdn.jsdelivr.net/npm/skapi-js@latest/dist/skapi.js"></script>
 <script src="service.js"></script>
+<link rel="stylesheet" href="main.css" />
 
 <script>
     /*
         Check if the user is logged in.
         If the user is logged in, redirect the user to welcome page.
     */
-    skapi.getProfile().then(user => {
+    skapi.getProfile().then((user) => {
         if (user) {
-            location.href = 'welcome.html';
+            location.href = "welcome.html";
         }
     });
 </script>
 <main>
     <a href="index.html">Back</a>
 
-    <h1>Login</h1>
-
-    <form action='welcome.html' onsubmit="
+    <form
+        action="welcome.html"
+        onsubmit="
             /*
                 If the login is successful, it will redirect the user to the welcome.html page.
                 If the login is unsuccessful, it will show an alert with the error message.
@@ -42,29 +43,34 @@
                     alert(err.message);
                 }
             });
-    ">
-        <table>
-            <tr>
-                <td>Email</td>
-                <td>
-                    <input name="email" placeholder='your@email.com' required>
-                </td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td>
-                    <input type="password" name="password" minlength="6" placeholder='At least 6 characters' required>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td style="text-align:right">
-                    <small><a href="forgot-password.html">Forgot Password?</a></small>
-                    <br>
-                    <br>
-                    <small><a href="signup.html">Don't have an account?</a></small> <input type="submit" value="Login">
-                </td>
-            </tr>
-        </table>
+    "
+    >
+        <h1>Login</h1>
+
+        <label for="email">Email</label>
+        <input name="email" placeholder="your@email.com" required />
+
+        <label for="password">Password</label>
+        <input
+            type="password"
+            name="password"
+            minlength="6"
+            placeholder="At least 6 characters"
+            required
+        />
+
+        <br />
+
+        <button type="submit">Login</button>
+
+        <div style="text-align: center; margin-top: 10px">
+            <small>
+                <a href="signup.html">Don't have an account?</a>
+            </small>
+            <span> | </span>
+            <small>
+                <a href="forgot-password.html">Forgot Password?</a>
+            </small>
+        </div>
     </form>
 </main>

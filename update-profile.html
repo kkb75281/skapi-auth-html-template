@@ -1,72 +1,70 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://cdn.jsdelivr.net/npm/skapi-js@latest/dist/skapi.js"></script>
-
 <script src="service.js"></script>
+<link rel="stylesheet" href="main.css" />
+
 <main>
     <a href="welcome.html">Back</a>
 
-    <h1>Update Profile</h1>
-
-    <form action='welcome.html' onsubmit="
+    <form
+        action="welcome.html"
+        onsubmit="
         /*
             skapi.updateProfile() will update the user profile with the provided data.
             If the update is successful, it will redirect the user to welcome.html page.
             If the update is unsuccessful, it will show an alert with the error message.
         */
         skapi.updateProfile(event).catch(err=>alert(err.message));
-    ">
-        <table>
-            <tr>
-                <td>
-                    Login Email
-                </td>
-                <td>
-                    <input id='input_email' name="email" placeholder='your@email.com' required>
+    "
+    >
+        <h1>Update Profile</h1>
 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Your name
-                </td>
-                <td>
-                    <input id='input_name' name="name" placeholder='Your name (required)' required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Birthday
-                </td>
-                <td>
-                    <input id='input_birthdate' name="birthdate" type="date">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Email to Public
-                </td>
-                <td>
-                    <input id='input_emailPublic' name="email_public" type="checkbox">
-                    <small>(Email verification required)</small>
-                    <style>
-                        /*
-                            Disable the checkbox if the user's email is not verified.
-                            Hide the preceding <small> tag noting 'Email verification required' if the checkbox is enabled.
-                        */
-                        #input_emailPublic:not([disabled])+small {
-                            display: none;
-                        }
-                    </style>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Email Verified
-                </td>
-                <td>
-                    <span id="span_emailVerified"></span>
-                    <a href="" onclick="
+        <label for="email">Login Email</label>
+        <input
+            id="input_email"
+            name="email"
+            placeholder="your@email.com"
+            required
+        />
+
+        <label for="name">Your Name</label>
+        <input
+            id="input_name"
+            name="name"
+            placeholder="Your name (required)"
+            required
+        />
+
+        <label for="birthdate">Birthday</label>
+        <input id="input_birthdate" name="birthdate" type="date" />
+
+        <div>
+            <label for="emailPublic">Email to Public</label>
+            <input id="input_emailPublic" name="email_public" type="checkbox" />
+            <small>(Email verification required)</small>
+            <style>
+                /*
+                Disable the checkbox if the user's email is not verified.
+                Hide the preceding <small> tag noting 'Email verification required' if the checkbox is enabled.
+            */
+                #input_emailPublic:not([disabled]) + small {
+                    display: none;
+                }
+            </style>
+        </div>
+
+        <div>
+            <label for="emailVerified">Email Verified</label>
+            <input
+                id="input_emailVerified"
+                name="email_verified"
+                type="checkbox"
+            />
+            <!-- <span id="span_emailVerified"></span> -->
+            <a
+                href=""
+                onclick="
                         event.preventDefault();
                         /*
                             When the user clicks on (Click to verify your email), it will ask user to received a verification email.
@@ -77,62 +75,52 @@
                         if(userConfirm) {
                             skapi.verifyEmail().then(() => location.href = 'email-verification.html').catch(err => alert(err => alert(err.message)) );
                         }
-                    ">
-                        (Click to verify your email)
-                        <style>
-                            /*
-                                Use css to show the email verification status dynamically.
-                                Show 'Yes' if the email is verified and 'No' if the email is not verified.
-                                Hide the preceding clickable small tag (Click to verifiy your email) if the email is verified.
-                            */
-                            #span_emailVerified.false::before {
-                                content: 'No';
-                                display: inline-block;
-                            }
+                    "
+            >
+                (Click to verify your email)
+                <style>
+                    /*
+                            Use css to show the email verification status dynamically.
+                            Show 'Yes' if the email is verified and 'No' if the email is not verified.
+                            Hide the preceding clickable small tag (Click to verifiy your email) if the email is verified.
+                        */
+                    /* #span_emailVerified.false::before {
+                            content: "No";
+                            display: inline-block;
+                        }
+    
+                        #span_emailVerified.true::after {
+                            content: "Yes";
+                        }
+    
+                        #span_emailVerified.true + a {
+                            display: none;
+                        } */
+                    #input_emailVerified:checked + a {
+                        display: none;
+                    }
+                </style>
+            </a>
+        </div>
 
-                            #span_emailVerified.true::after {
-                                content: 'Yes';
-                            }
+        <button tyep="submit">Update</button>
 
-                            #span_emailVerified.true+a {
-                                display: none;
-                            }
-                        </style>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Password
-                </td>
-                <td>
-                    <!--
-                        When the user clicks the link below, it will open the change-password.html page, where the user can change their password.
-                    -->
-                    <a href="change-password.html">Change Password</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td style="text-align: right;">
-                    <br>
-
-                    <input type="submit" value="Update">
-                </td>
-            </tr>
-        </table>
+        <div style="text-align: center; margin-top: 10px">
+            <small>
+                <a href="change-password.html">Change Password</a>
+            </small>
+        </div>
     </form>
 </main>
 
 <script>
     let user;
-    skapi.getProfile().then(u => {
+    skapi.getProfile().then((u) => {
         if (!u) {
             /*
                 If the user is not logged in, redirect the user to the index.html page.
             */
-            location.href = 'index.html';
+            location.href = "index.html";
             return;
         }
 
@@ -146,13 +134,16 @@
         input_name.value = user.name;
         input_birthdate.value = user.birthdate || "";
 
-        span_emailVerified.classList.add(user.email_verified.toString());
+        // span_emailVerified.classList.add(user.email_verified.toString());
         if (!user.email_verified) {
             /*
                 If the user's email is not verified, we will disable the email public checkbox.
                 User needs to verify their email before they can make their email public.
             */
             input_emailPublic.disabled = true;
+            input_emailVerified.checked = false;
+        } else {
+            input_emailVerified.checked = true;
         }
 
         /*
