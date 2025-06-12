@@ -1,55 +1,63 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://cdn.jsdelivr.net/npm/skapi-js@latest/dist/skapi.js"></script>
-
 <script src="service.js"></script>
+<link rel="stylesheet" href="main.css" />
+
 <script>
     /*
         Check if the user is not logged in, redirect the user to index page.
     */
     let user;
-    skapi.getProfile().then(u => {
+    skapi.getProfile().then((u) => {
         if (u) {
             user = u;
-        }
-        else {
-            location.href = 'index.html';
+        } else {
+            location.href = "index.html";
         }
     });
 </script>
 <main>
     <a href="update-profile.html">Back</a>
 
-    <h1>Email Verification</h1>
-    
-    <p>
-        Please check your email for the verification code.
-        <br>
-        Enter the received code below and click verify.
-    </p>
+    <section>
+        <h1>Email Verification</h1>
 
-    <p>
-        If you have not received the code, please check your spam folder.
-        <br>
-        Or click <a href="" onclick="
-            event.preventDefault();
-            let userConfirm = confirm(`We will send a verification email to ${user.email}. Continue?`);
-            if (userConfirm) {
-                skapi.verifyEmail()
-                    .then(()=>this.parentElement.innerHTML = 'Verification email has been sent.')
-                    .catch(err=>alert(err.message));
-            }
-        ">HERE</a> to resend.
-    </p>
+        <p>
+            Please check your email for the verification code.
+            <br />
+            Enter the received code below and click verify.
+        </p>
 
-    <br>
+        <p>
+            If you have not received the code, please check your spam folder. Or
+            click
+            <a
+                href=""
+                onclick="
+                event.preventDefault();
+                let userConfirm = confirm(`We will send a verification email to ${user.email}. Continue?`);
+                if (userConfirm) {
+                    skapi.verifyEmail()
+                        .then(()=>this.parentElement.innerHTML = 'Verification email has been sent.')
+                        .catch(err=>alert(err.message));
+                }
+            "
+                >HERE</a
+            >
+            to resend.
+        </p>
+    </section>
 
-    <form action='update-profile.html' onsubmit="
+    <form
+        action="update-profile.html"
+        onsubmit="
         skapi.verifyEmail(event).then(r=>alert('Your email is verified.')).catch(err=>alert(err.message))
-    ">
+    "
+    >
         <div id="div_singleInput">
-            <input type="text" name="code" placeholder="6 digits code">
-            <input type="submit" value="Verify">
+            <input type="text" name="code" placeholder="6 digits code" />
+            <input type="submit" value="Verify" />
         </div>
     </form>
 </main>

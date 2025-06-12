@@ -8,14 +8,18 @@
     <h1>Login Success</h1>
     <p id="WelcomeMessage"></p>
     <pre id="UserInfo"></pre>
-    <a href="update-profile.html">Update Profile</a>
-    <br />
-    <a href="remove-account.html">Remove Account</a>
-    <br />
-    <br />
     <button onclick="skapi.logout().then(()=>location.href = 'index.html')">
         Logout
     </button>
+    <div style="text-align: center; margin-top: 10px">
+        <small>
+            <a href="update-profile.html">Update Profile</a>
+        </small>
+        <span> | </span>
+        <small>
+            <a href="remove-account.html">Remove Account</a>
+        </small>
+    </div>
 </main>
 
 <script>
