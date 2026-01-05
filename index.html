@@ -1,0 +1,65 @@
+<!--
+    index.html is the first page your user will see when they visit your website.
+-->
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!--
+    Following <script> tag will import skapi.js.
+-->
+<script src="https://cdn.jsdelivr.net/npm/skapi-js@latest/dist/skapi.js"></script>
+
+<!--
+    The following <link> tag will import main.css.
+    You can change the path to your CSS file.
+-->
+<link rel="stylesheet" href="main.css" />
+
+<!--
+    Import the service.js code that contains your initialization of Skapi class.
+-->
+<script src="service.js"></script>
+
+<script>
+    /*
+        Check if the user is logged in.
+        If the user is logged in, redirect the user to welcome page.
+    */
+    skapi.getProfile().then((user) => {
+        if (user) {
+            location.href = "welcome.html";
+        }
+    });
+</script>
+
+<style>
+    ul li {
+        margin-top: 4px;
+    }
+</style>
+
+<main>
+    <h1>Skapi HTML Authentication Template</h1>
+    <p>This is a plain HTML template for Skapi's authentication features.</p>
+    <p>
+        This template packs all the authentication features you can use in your
+        HTML application:
+    </p>
+    <ul>
+        <li>Signup</li>
+        <li>Signup email verification</li>
+        <li>Login</li>
+        <li>Forgot password</li>
+        <li>Change password</li>
+        <li>Update account profile</li>
+        <li>Remove account</li>
+        <li>Recover account</li>
+    </ul>
+
+    <br />
+
+    <p style="font-weight: bold">Login or Sign-up below:</p>
+    <a href="login.html">Login</a>
+    |
+    <a href="signup.html">Sign-Up</a>
+</main>

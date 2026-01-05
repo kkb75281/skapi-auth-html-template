@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://cdn.jsdelivr.net/npm/skapi-js@latest/dist/skapi.js"></script>
+<script src="service.js"></script>
+<link rel="stylesheet" href="main.css" />
+
+<script>
+    /*
+        Check if the user is logged in.
+        If the user is logged in, redirect the user to welcome page.
+    */
+    skapi.getProfile().then((user) => {
+        if (user) {
+            location.href = "welcome.html";
+        }
+    });
+</script>
+<main>
+    <a href="index.html">Back</a>
+
+    <form
+        action="welcome.html"
+        onsubmit="
+            /*
+                If the login is successful, it will redirect the user to the welcome.html page.
+                If the login is unsuccessful, it will show an alert with the error message.
+            */
+            skapi.login(event).catch(async err=>{
+                if(err.code === 'USER_IS_DISABLED') {
+                    /*
+                        If the user account is disabled, you can ask the user if they want to recover their account.
+                        If they do, we will call skapi.recoverAccount() to send a recovery email to the user.
+                        Then we will redirect the user to the authentication/recover-account.html page that gives the user instructions to recover their account.
+                    */
+                    let recover = confirm('Your account is disabled. Would you like to recover your account?');
+                    if(recover) {
+                        await skapi.recoverAccount();
+                        location.href = 'recover-account.html';
+                        return;
+                    }
+                }
+                else {
+                    alert(err.message);
+                }
+            });
+    "
+    >
+        <h1>Login</h1>
+
+        <label for="email">Email</label>
+        <input name="email" placeholder="your@email.com" required />
+
+        <label for="password">Password</label>
+        <input
+            type="password"
+            name="password"
+            minlength="6"
+            placeholder="At least 6 characters"
+            required
+        />
+
+        <br />
+
+        <button type="submit">Login</button>
+
+        <div style="text-align: center; margin-top: 10px">
+            <small>
+                <a href="signup.html">Don't have an account?</a>
+            </small>
+            <span> | </span>
+            <small>
+                <a href="forgot-password.html">Forgot Password?</a>
+            </small>
+        </div>
+    </form>
+</main>
