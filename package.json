@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx bns port=3333"
+    "dev": "npx bns port=3300"
   },
   "author": "",
   "license": "ISC",
