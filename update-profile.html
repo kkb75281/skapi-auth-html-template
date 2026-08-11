@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://cdn.jsdelivr.net/npm/skapi-js@latest/dist/skapi.js"></script>
-<script src="service.js"></script>
+<script src="project.js"></script>
 <link rel="stylesheet" href="main.css" />
 
 <main>
@@ -10,13 +10,13 @@
     <form
         action="welcome.html"
         onsubmit="
-        /*
+            /*
             skapi.updateProfile() will update the user profile with the provided data.
             If the update is successful, it will redirect the user to welcome.html page.
             If the update is unsuccessful, it will show an alert with the error message.
         */
-        skapi.updateProfile(event).catch(err=>alert(err.message));
-    "
+            skapi.updateProfile(event).catch((err) => alert(err.message))
+        "
     >
         <h1>Update Profile</h1>
 
@@ -41,7 +41,7 @@
 
         <div>
             <label for="emailPublic">Email to Public</label>
-            <input id="input_emailPublic" name="email_public" type="checkbox"/>
+            <input id="input_emailPublic" name="email_public" type="checkbox" />
             <small>(Email verification required)</small>
             <style>
                 /*
@@ -66,17 +66,25 @@
             <a
                 href=""
                 onclick="
-                        event.preventDefault();
-                        /*
+                    event.preventDefault();
+                    /*
                             When the user clicks on (Click to verify your email), it will ask user to received a verification email.
                             If the user confirms, it will send a verification email to the user.
                             Then, the user will be redirected to the email-verification.html page where the user can enter the verification code to verify their email address.
                         */
-                        let userConfirm = confirm(`We will send a verification email to ${user.email}. Continue?`);
-                        if(userConfirm) {
-                            skapi.verifyEmail().then(() => location.href = 'email-verification.html').catch(err => alert(err => alert(err.message)) );
-                        }
-                    "
+                    let userConfirm = confirm(
+                        `We will send a verification email to ${user.email}. Continue?`,
+                    );
+                    if (userConfirm) {
+                        skapi
+                            .verifyEmail()
+                            .then(
+                                () =>
+                                    (location.href = 'email-verification.html'),
+                            )
+                            .catch((err) => alert((err) => alert(err.message)));
+                    }
+                "
             >
                 (Click to verify your email)
                 <style>

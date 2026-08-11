@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://cdn.jsdelivr.net/npm/skapi-js@latest/dist/skapi.js"></script>
-<script src="service.js"></script>
+<script src="project.js"></script>
 <link rel="stylesheet" href="main.css" />
 
 <script>
@@ -35,14 +35,21 @@
             <a
                 href=""
                 onclick="
-                event.preventDefault();
-                let userConfirm = confirm(`We will send a verification email to ${user.email}. Continue?`);
-                if (userConfirm) {
-                    skapi.verifyEmail()
-                        .then(()=>this.parentElement.innerHTML = 'Verification email has been sent.')
-                        .catch(err=>alert(err.message));
-                }
-            "
+                    event.preventDefault();
+                    let userConfirm = confirm(
+                        `We will send a verification email to ${user.email}. Continue?`,
+                    );
+                    if (userConfirm) {
+                        skapi
+                            .verifyEmail()
+                            .then(
+                                () =>
+                                    (this.parentElement.innerHTML =
+                                        'Verification email has been sent.'),
+                            )
+                            .catch((err) => alert(err.message));
+                    }
+                "
                 >HERE</a
             >
             to resend.
@@ -52,8 +59,11 @@
     <form
         action="update-profile.html"
         onsubmit="
-        skapi.verifyEmail(event).then(r=>alert('Your email is verified.')).catch(err=>alert(err.message))
-    "
+            skapi
+                .verifyEmail(event)
+                .then((r) => alert('Your email is verified.'))
+                .catch((err) => alert(err.message))
+        "
     >
         <div id="div_singleInput">
             <input type="text" name="code" placeholder="6 digits code" />
