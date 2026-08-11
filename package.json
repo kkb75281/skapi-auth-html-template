@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx bns 3300"
+    "dev": "npx bns port=3300"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "basic-node-server": "^1.0.13"
+    "basic-node-server": "^1.1.0"
   }
 }
