@@ -5,12 +5,12 @@
 
 /*
     Below, is the initializing code for Skapi.
-    Replace "service_id" and "owner_id" with your actual Service ID and Owner ID.
-    You can retrieve the service ID and the owner ID from www.skapi.com.
+    Replace "project_id" and "owner_id" with your actual Project ID and Owner ID.
+    You can retrieve the project ID and the owner ID from www.skapi.com.
     For more information, checkout the Getting Started: https://docs.skapi.com/introduction/getting-started.html
 */
 
-const SERVICE_ID = "";
+const PROJECT_ID = "";
 
 /*
     Below, the options object is passed to the Skapi constructor.
@@ -35,4 +35,4 @@ let options = {
     },
 };
 
-const skapi = new Skapi(SERVICE_ID, options);
+const skapi = new Skapi(PROJECT_ID, options);
