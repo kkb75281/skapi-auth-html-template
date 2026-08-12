@@ -39,6 +39,6 @@ You can check our live demo <a href="https://skapi-auth-html-template.skapi.com/
 
 ## Important!
 
-Replace the `PROJECT_ID` and `OWNER_ID` value to your own project in `project.js`
+Replace the `PROJECT_ID` value to your own project in `project.js`
 
 You can get your own project ID from [Skapi](https://www.skapi.com)
